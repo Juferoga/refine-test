@@ -1,11 +1,23 @@
 import { FilterDropdown, useTable } from "@refinedev/antd";
 import { List, Table } from "antd";
 import { Radio } from "antd/lib";
+import { IProduct } from "interfaces";
 
 
 const ProductList = () => {
 
-  const { tableProps } = useTable();
+  const { tableProps } = useTable<IProduct>(
+    {
+      sorters : {
+        initial: [
+          {
+            field: 'id', 
+            order: 'desc'
+          }
+        ]
+      }
+    }
+  );
 
   return <List>
     <Table {...tableProps} rowKey="id">
